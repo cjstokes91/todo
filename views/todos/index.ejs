@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODOS LIST</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div>
+    <h1>To-Do's</h1>
+    <ul>
+      <% if (todos.length === 0) {%>
+      <p>**No to do yet**</p>
+      <% } else {%>
+      <% todos.forEach(function(t, id) { %>
+      <li>
+        <form action="/todos/<%= id %>?_method=DELETE" class="delete-form" method="POST">
+          <button type="submit">DELETE</button>
+      </form>
+      <span><%= t.todo%></span>
+      <form action="/todos/<%= id %>?_method=PUT" method="POST">
+          <input type="text" name="todo" placeholder="update todo">
+          <input type="submit" value="Update To Do"></input>
+      </form>
+  </li>
+      </li>
+      <% }); %>
+      <% } %>
+    </ul>
+    <form action="/todos/new" method="POST"></a>
+      <input type="text" name="todo" placeholder="New To Do">
+      <input type="submit" value="Add To do"></input>
+      </form> 
+  </div>
+
+</body>
+
+</html>
